@@ -1,0 +1,110 @@
+<!-- EDUCACIÓN -->
+<div class="margenes" id="educacion">
+    <h1 class="display-5 fw-bold">Educacion</h1>
+    <div class="mt-2 mb-4 text-white bg-dark rounded-3">
+        <div class="container-fluid py-5">
+
+            <p>Estudios alcanzados hasta la fecha.
+            </p>
+
+            <div class="accordion" id="accordionExample" *ngFor="let educacion of educacionLista">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            {{educacion.titulo}}
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <h4 *ngIf="!modalOn">{{educacion.lugar}}</h4>
+                            <div class="accordion-body editDelete">
+                                <span *ngIf="!modalOn" class="education-date">{{educacion.fecha_inicio}} -
+                                    {{educacion.fecha_fin}}</span>
+
+                                <div class="accordion-body editDelete buttons" *ngIf="isLogged">
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn" (click)="onModal()" *ngIf="!modalOn">
+                                        <i [ngStyle]="{'color': 'blue'}" style="cursor: pointer; margin-right: 30px;"
+                                            class="fa-solid fa-pen-to-square">
+                                        </i>
+
+                                    </button>
+
+                                    <form (ngSubmit)="onDeleteEdu(educacion.id)" novalidate #f="ngForm"
+                                        *ngIf="!modalOn">
+                                        <button type="submit" class="btn" [disabled]="!f.valid">
+                                            <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; "
+                                                class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <!-- Modal -->
+                                <div role="dialog" id="miModal" class="col" *ngIf="modalOn">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style="color:black">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar educación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close" (click)="onModalOff()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+
+                                                    <form (ngSubmit)="onUpdateEdu(educacion.id)" novalidate #f="ngForm">
+
+                                                        <div class="form-group">
+                                                            <label for="titulo">Titulo</label>
+                                                            <input type="text" class="form-control" id="titulo"
+                                                                placeholder="Nombre del título obtenido" name="titulo"
+                                                                [(ngModel)]="educacion.titulo" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="lugar">Lugar</label>
+                                                            <input type="text" class="form-control" id="lugar"
+                                                                placeholder="Nombre del establecimiento educativo"
+                                                                name="lugar" [(ngModel)]="educacion.lugar" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fecha_inicio">Fecha inicio</label>
+                                                            <input type="text" class="form-control" id="fecha_inicio"
+                                                                placeholder="aaaa" name="fecha_inicio"
+                                                                [(ngModel)]="educacion.fecha_inicio" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fecha_fin">Fecha fin</label>
+                                                            <input type="text" class="form-control" id="fecha_fin"
+                                                                placeholder="aaaa" name="fecha_fin"
+                                                                [(ngModel)]="educacion.fecha_fin" required>
+                                                        </div>
+
+                                                        <button type="submit" class="btn btn-primary"
+                                                            [disabled]="!f.valid">Guardar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" routerLink="" data-bs-toggle="modal"
+                data-bs-target="#modelId2" *ngIf="isLogged">
+                Agregar más
+            </button>
+
+            <app-new-educacion></app-new-educacion>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.btn.btn-primary.cancel{
+    background-color: red;
+    border-color: red;
+    color: white;
+    width: 150px;
+    margin-left: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn.btn-primary.save{
+    color: white;
+    width: 150px;
+    margin-top: 20px;
+    
+    text-align: center;
+}
+
+.row.form{
+    max-width: 300;
+    width: auto;
+    align-items: center;
+    margin: 0 auto 40px;
+    
+    text-align: center;
+}
+
+#title{
+    font-weight: bold;
+}
+
+#newExp{
+    width: auto;
+    margin: auto;
+}

@@ -1,0 +1,19 @@
+<!-- ACERCA DE MI -->
+<div class="margenes" id="aboutme">
+    <h1 class="display-5 fw-bold">Acerca de mi</h1>
+    <div class="mt-2 mb-4 text-white bg-dark rounded-3">
+        <div class="container-fluid py-5" style="text-align:center;">
+       
+                <p id="about">
+                    {{aboutMe.descripcion}}
+                </p>
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" *ngIf="isLogged" data-bs-toggle="modal"
+                data-bs-target="#modelId">
+                Modificar
+            </button>
+            <app-new-about-me></app-new-about-me>
+        </div>
+    </div>
+</div>

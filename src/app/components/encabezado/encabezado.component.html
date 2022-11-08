@@ -1,0 +1,61 @@
+<!--- Navbar --->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: fixed;">
+    <div class="container-fluid">
+        <img src="assets/logoArgProg.png" href="#" alt="logo" height="60px" width="110px" style="padding-right: 10px;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Portfolio</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Secciones
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#aboutme">Acerca de mi</a>
+                        <a class="dropdown-item" href="#experiencia">Experiencia</a>
+                        <a class="dropdown-item" href="#educacion">Educación</a>
+                        <a class="dropdown-item" href="#proyectos">Proyectos</a>
+                        <a class="dropdown-item" href="#skills">H&S</a>
+                        <a class="dropdown-item" href="#contacto">Contacto</a>
+                    </ul>
+                </li>
+            </ul>
+
+            
+            <button type="button" class="btn btn-primary" (click)="onLogOut()" *ngIf="isLogged" routerLink="/login">
+                Log out
+            </button>
+
+            <button type="button" class="btn btn-primary" (click)="login()" *ngIf="!isLogged">
+                Log in
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<!-- BANNER -->
+<div class="card" id="banner">
+
+    <div id="nombre">
+        <span> {{info.nombre +" "+ info.apellido}} </span>
+    </div>
+
+    <div>
+        <img id="foto" style="border-radius: 100%;" src="{{info.img}}" alt="{{info.apellido}} ">
+        <i class="fa-solid fa-pen-to-square" id="modiFoto" type="button" *ngIf="isLogged" data-bs-toggle="modal"
+            data-bs-target="#modelId5">
+            <!-- Button trigger modal -->
+        </i>
+    </div>
+
+    <app-info></app-info>
+
+</div>

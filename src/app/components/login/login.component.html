@@ -1,0 +1,54 @@
+<app-encabezado></app-encabezado>
+
+<div id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form [formGroup]="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate style="margin-right: 20px; margin-left: 20px">
+                
+                <div class="login">
+                    <br><br>
+                </div>
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                <div class="form-floating">
+                    <input type="email" formControlName="email" class="form-control" id="floatingInput" [(ngModel)]="nombreUsuario" required
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+
+                <div *ngIf="Mail?.errors  && Mail?.touched">
+                    <p *ngIf="Mail?.hasError('required')" class="error">
+                        El usuario es requerido.
+                    </p>
+                    <!-- <p *ngIf="Mail?.hasError('email')" class="error">
+                        El formato del email debe ser válido.
+                    </p> -->
+                </div>
+
+                <div class="form-floating">
+                    <input type="password" formControlName="password" [class.border-danger]="MailValid"
+                        class="form-control" id="floatingPassword" [(ngModel)]="password" required placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                <!-- Gracias al getter que configuramos en el controlador -->
+                <div *ngIf="Password?.errors  && Password?.touched">
+                    <p *ngIf="Password?.hasError('required')" class="error">
+                        El password es requerido.
+                    </p>
+                    <p *ngIf="Password?.errors?.['minlength']" class="error">
+                        El password debe ser de 4 o más caracteres.
+                    </p>
+                </div>
+                
+                <button class="w-100 btn btn-lg btn-dark" type="submit" >Sign in</button>
+                <p class="mt-5 mb-3 text-muted">&copy; 2021–2022</p>
+                <div class="login">
+                    <br><br>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
